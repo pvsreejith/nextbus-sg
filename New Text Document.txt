@@ -1,1 +1,0 @@
-http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?AccountKey=ypUM86fdSh2EMSl6T5rcOg==&accept=application/json&BusStopCode=54201&ServiceNo=268

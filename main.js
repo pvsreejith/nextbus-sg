@@ -8,7 +8,7 @@ const { Headers } = require('node-fetch')
 // configure the PORT
 const PORT = parseInt(process.argv[2]) || parseInt(process.env.PORT) || 3000
 const API_KEY = process.env.API_KEY || "ypUM86fdSh2EMSl6T5rcOg==";
-const BUSAPI_URL = 'http://api.mytransport.sg/ltaodataservice/BusArrivalv2/'
+const BUSAPI_URL = 'http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2'
 
 // create an instance of express
 const app = express()
@@ -47,14 +47,13 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?BusStopCode=54201&ServiceNo=268", requestOptions)
+fetch(url, requestOptions)
   .then(result => result.json())
   .then(bus => {
     const busArray = bus.Services
                     .map( d => {
 
-
-                    return { ServiceNo: d.ServiceNo,
+                            return { ServiceNo: d.ServiceNo,
                             next1 : d.NextBus.EstimatedArrival,
                             next2 : d.NextBus2.EstimatedArrival,
                             next3 : d.NextBus3.EstimatedArrival
@@ -87,3 +86,4 @@ app.listen(PORT, () => {
     console.info('API Key = ' + API_KEY)
     
 })
+

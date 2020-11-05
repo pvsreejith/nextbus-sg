@@ -1,28 +1,43 @@
-<h3>Your search for Bus {{ ServiceNo }}  at stop {{BusStopCode}} </h3>
+<h3>Your search for Buses {{ ServiceNo }}  at stop {{BusStopCode}} </h3>
 
     
         <div>
             <table class="table table-striped table-dark">
+
+                <thead>
+                    <tr>
+                        <td>ServiceNo</td>
+                        <td>Next Bus</td>
+                        <td>2nd Bus</td>
+                         <td>3rd Bus</td>
+                    </tr>
+                </thead>
                
+
+
 
                 <tbody>
 
-                    {{#each busArray}}
-                   
+                    {{#each busArray}}                  
 
                     <tr>
-                        <td>Next Bus</td>
+                        
+                        <td>{{ ServiceNo }}</td>
                         <td>{{this.next1}}</td>
+                        <td>{{this.next2}}</td>
+                        <td>{{this.next3}}</td>
                     </tr>
 
-                     <tr>
+                     {{!-- <tr>
                         <td> 2nd Bus</td>
-                        <td>{{this.next2}}</td>
+                        <td>{{ ServiceNo }}</td>
+                        
                     </tr>
 
                      <tr>
                         <td>3rd Bus</td>
-                        <td>{{this.next3}}</td>
+                        <td>{{ ServiceNo }}</td> --}}
+                        
                     </tr>
 
 
@@ -31,7 +46,10 @@
 
                 </tbody>
 
-            </table>            
+            </table>   
+
+ 
+            <a href="/"><button type="button" class="btn btn-secondary btn-lg">Back</button> </a>     
         </div>
         <hr>
     
