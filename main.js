@@ -7,7 +7,7 @@ const { Headers } = require('node-fetch')
 
 // configure the PORT
 const PORT = parseInt(process.argv[2]) || parseInt(process.env.PORT) || 3000
-const API_KEY = process.env.API_KEY || "ypUM86fdSh2EMSl6T5rcOg==";
+const API_KEY = process.env.API_KEY || "";
 const BUSAPI_URL = 'http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2'
 
 // create an instance of express
