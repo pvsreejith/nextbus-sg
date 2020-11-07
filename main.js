@@ -61,7 +61,7 @@ fetch(url, requestOptions)
 
                         if (diffmin<=0) return 'Arriving'                        
                         if (diffmin > 0) return  (diffmin + ' min')
-                        else return 'No Services'
+                        else return 'No Service'
 
                         }
 
