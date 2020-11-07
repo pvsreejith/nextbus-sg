@@ -4,10 +4,11 @@ const handlebars = require('express-handlebars')
 const fetch = require('node-fetch')
 const withQuery = require('with-query').default
 const { Headers } = require('node-fetch')
+const moment = require('moment');
 
 // configure the PORT
 const PORT = parseInt(process.argv[2]) || parseInt(process.env.PORT) || 3000
-const API_KEY = process.env.API_KEY || "";
+const API_KEY = process.env.API_KEY || "ypUM86fdSh2EMSl6T5rcOg==";
 const BUSAPI_URL = 'http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2'
 
 // create an instance of express
@@ -53,10 +54,21 @@ fetch(url, requestOptions)
     const busArray = bus.Services
                     .map( d => {
 
+                        //find difference in time
+                        let tc = (obj)=>{
+                             
+                            let diffmin =  moment(obj).diff(moment(), 'minutes')
+
+                        if (diffmin<=0) return 'Arriving'                        
+                        if (diffmin > 0) return  (diffmin + ' min')
+                        else return 'No Services'
+
+                        }
+
                             return { ServiceNo: d.ServiceNo,
-                            next1 : d.NextBus.EstimatedArrival,
-                            next2 : d.NextBus2.EstimatedArrival,
-                            next3 : d.NextBus3.EstimatedArrival
+                            next1 : tc(d.NextBus.EstimatedArrival),
+                            next2 : tc(d.NextBus2.EstimatedArrival),
+                            next3 : tc(d.NextBus3.EstimatedArrival)
                                                                      
                     }
                 }
